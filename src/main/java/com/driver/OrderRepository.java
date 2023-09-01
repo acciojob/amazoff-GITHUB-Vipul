@@ -36,10 +36,11 @@ public class OrderRepository {
     }
 
     public DeliveryPartner getPartnerById(String partnerId) {
+        DeliveryPartner dp = null;
         if(DeliveryPartners.containsKey(partnerId)) {
-            return DeliveryPartners.get(partnerId);
+            dp= DeliveryPartners.get(partnerId);
         }
-        return null;
+        return dp;
     }
 
     public void addOrderPartnerPair(String orderId, String partnerId) {

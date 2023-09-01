@@ -11,9 +11,6 @@ public class OrderService {
 //@Autowired
 static OrderRepository orderrepository=new OrderRepository();
 
-    public  DeliveryPartner getPartnerById(String partnerId) {
-        return orderrepository.getPartnerById(partnerId);
-    }
 
 
     public void addOrder(Order order) {
@@ -29,6 +26,9 @@ static OrderRepository orderrepository=new OrderRepository();
         return orderrepository.getOrderById(orderId);
     }
 
+    public  DeliveryPartner getPartnerById(String partnerId) {
+        return orderrepository.getPartnerById(partnerId);
+    }
     public void addOrderPartnerPair(String orderId, String partnerId) {
         orderrepository.addOrderPartnerPair(orderId,partnerId);
     }

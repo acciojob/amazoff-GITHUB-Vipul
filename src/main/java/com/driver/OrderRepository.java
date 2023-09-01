@@ -14,20 +14,32 @@ public class OrderRepository {
 
     HashMap<String,List<String>> OrdersPerDeliveryPartner=new HashMap<>();
     public void addOrder(Order order) {
+        if(Orders!=null) {
 
-        Orders.put(order.getId(),order);
+            if(!Orders.containsKey(order.getId())) {
+                Orders.put(order.getId(), order);
+            }
+        }
     }
 
     public void addPartner(String partnerId) {
-        DeliveryPartners.put(partnerId, new DeliveryPartner(partnerId));
+        if(!DeliveryPartners.containsKey(partnerId)) {
+            DeliveryPartners.put(partnerId, new DeliveryPartner(partnerId));
+        }
     }
 
     public Order getOrderById(String orderId) {
-        return Orders.get(orderId);
+        if(Orders.containsKey(orderId)) {
+            return Orders.get(orderId);
+        }
+        return null;
     }
 
     public DeliveryPartner getPartnerById(String partnerId) {
-        return DeliveryPartners.get(partnerId);
+        if(DeliveryPartners.containsKey(partnerId)) {
+            return DeliveryPartners.get(partnerId);
+        }
+        return null;
     }
 
     public void addOrderPartnerPair(String orderId, String partnerId) {
@@ -48,7 +60,10 @@ public class OrderRepository {
 
 
     public Integer getOrderCountPartnerId(String partnerId) {
-        return DeliveryPartners.get(partnerId).getNumberOfOrders();
+        if(OrdersPerDeliveryPartner.containsKey(partnerId)) {
+            return DeliveryPartners.get(partnerId).getNumberOfOrders();
+        }
+        return null;
     }
 
     public List<String> getAllOrders() {
@@ -56,7 +71,10 @@ public class OrderRepository {
     }
 
     public List<String> getOrderByPartnerId(String partnerId) {
-        return OrdersPerDeliveryPartner.get(partnerId);
+        if(OrdersPerDeliveryPartner.containsKey(partnerId)) {
+            return OrdersPerDeliveryPartner.get(partnerId);
+        }
+        return null;
     }
 
     public Integer getCountOfUnassignedOrders() {

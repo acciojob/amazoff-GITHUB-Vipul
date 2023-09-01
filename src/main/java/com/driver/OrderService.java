@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public class OrderService {
 
-@Autowired
+//@Autowired
 static OrderRepository orderrepository=new OrderRepository();
 
     public  DeliveryPartner getPartnerById(String partnerId) {

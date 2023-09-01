@@ -50,7 +50,7 @@ public class OrderController {
 
     @GetMapping("/get-partner-by-id/{partnerId}")
     public ResponseEntity<DeliveryPartner> getPartnerById(@PathVariable String partnerId){
-        DeliveryPartner  deliveryPartner=OrderService.getPartnerById(partnerId);
+        DeliveryPartner  deliveryPartner=orderservice.getPartnerById(partnerId);
         //deliveryPartner should contain the value given by partnerId
 
         return new ResponseEntity<>(deliveryPartner, HttpStatus.CREATED);

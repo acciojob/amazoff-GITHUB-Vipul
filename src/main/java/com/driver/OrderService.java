@@ -11,7 +11,7 @@ public class OrderService {
 @Autowired
 static OrderRepository orderrepository=new OrderRepository();
 
-    public static DeliveryPartner getPartnerById(String partnerId) {
+    public  DeliveryPartner getPartnerById(String partnerId) {
         return orderrepository.getPartnerById(partnerId);
     }
 

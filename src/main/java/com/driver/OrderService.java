@@ -9,7 +9,7 @@ import java.util.List;
 public class OrderService {
 
 @Autowired
-static OrderRepository orderrepository;
+static OrderRepository orderrepository=new OrderRepository();
 
     public static DeliveryPartner getPartnerById(String partnerId) {
         return orderrepository.getPartnerById(partnerId);

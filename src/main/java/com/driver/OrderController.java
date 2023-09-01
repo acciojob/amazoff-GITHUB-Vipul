@@ -120,6 +120,7 @@ public class OrderController {
     public ResponseEntity<String> getLastDeliveryTimeByPartnerId(@PathVariable String partnerId){
         String time = null;
 
+        time=orderservice.getLastDeliveryTimeByPartnerId(partnerId);
         //Return the time when that partnerId will deliver his last delivery order.
 
         return new ResponseEntity<>(time, HttpStatus.CREATED);
@@ -129,8 +130,8 @@ public class OrderController {
     public ResponseEntity<String> deletePartnerById(@PathVariable String partnerId){
 
         //Delete the partnerId
+        orderservice.deletePartnerById(partnerId);
         //And push all his assigned orders to unassigned orders.
-
         return new ResponseEntity<>(partnerId + " removed successfully", HttpStatus.CREATED);
     }
 
@@ -139,6 +140,7 @@ public class OrderController {
 
         //Delete an order and also
         // remove it from the assigned order of that partnerId
+        orderservice.deleteOrderById(orderId);
 
         return new ResponseEntity<>(orderId + " removed successfully", HttpStatus.CREATED);
     }

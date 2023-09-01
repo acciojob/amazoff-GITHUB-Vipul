@@ -40,12 +40,10 @@ public class OrderController {
     }
 
     @GetMapping("/get-order-by-id/{orderId}")
-    public ResponseEntity getOrderById(@PathVariable String orderId){
+    public ResponseEntity<Order> getOrderById(@PathVariable String orderId){
 
         Order order= null;
         order=orderservice.getOrderById(orderId);
-        if(order==null)
-            return new ResponseEntity<>("Order not found", HttpStatus.NOT_FOUND);
         //order should be returned with an orderId.
 
         return new ResponseEntity<>(order, HttpStatus.CREATED);
@@ -56,8 +54,6 @@ public class OrderController {
 
         DeliveryPartner deliveryPartner = null;
           deliveryPartner=OrderService.getPartnerById(partnerId);
-          if(deliveryPartner==null)
-              return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
         //deliveryPartner should contain the value given by partnerId
 
         return new ResponseEntity<>(deliveryPartner, HttpStatus.CREATED);
@@ -79,11 +75,6 @@ public class OrderController {
         List<String> orders = null;
         //orders should contain a list of orders by PartnerId
         orders=orderservice.getOrderByPartnerId(partnerId);
-        if(orders==null)
-        {
-            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
-        }
-
         return new ResponseEntity<>(orders, HttpStatus.CREATED);
     }
 
